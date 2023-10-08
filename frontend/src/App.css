@@ -1,0 +1,198 @@
+.App {
+  text-align: center;
+  
+}
+
+*{
+  background-color: black;
+}
+
+/* Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:black;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.navbar-links {
+  list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.navbar-links li {
+  margin-right: 60px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  font-weight: bold;
+  color: rgb(158, 16, 16);
+}
+
+/* LandingPage.css */
+
+.landing {
+  background-color: black;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.landing-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.landing-left {
+  flex: 1;
+  text-align: left;
+  color: white;
+  padding-left: 120px;
+  padding-top: 50px;
+  
+}
+
+
+.red{
+  color: rgb(158, 16, 16);
+}
+
+.landing h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+
+.landing-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding-top: 50px;
+}
+
+.landing-right {
+  flex: 1;
+  text-align: right;
+}
+
+.login-button,
+.signup-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.login-button {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.signup-button {
+  background-color:rgb(158, 16, 16);
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.login-button:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+.signup-button:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #fff;
+}
+
+.landing img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Features.css */
+
+.question-box {
+  background-color:black;
+  padding-top:50px;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+}
+
+.question-box h3 {
+  padding-top: 50px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: rgb(158, 16, 16);
+}
+
+.question-box p{
+  padding-top: 20px;
+  text-align: center;
+}
+
+.features-box {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+  padding-left:150px;
+  padding-right: 150px;
+}
+
+.feature-column {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  background-color:black;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(123, 119, 119, 0.2);
+  color: whitesmoke;
+}
+
+.feature-column h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
