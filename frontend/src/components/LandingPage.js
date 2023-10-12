@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom'; 
+import Navbar from './Navbar';
+import Features from './Features';
 import '../App.css';
-
 const LandingPage = () => {
   return (
     <div className="landing">
+
+      <div className='navbar_div'>
+      <Navbar/>
+      </div>
+      
       <div className="landing-content">
         <div className="landing-left">
           <h1>"Ride <span className='red'>Smart</span>,</h1>
@@ -16,8 +22,12 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="landing-right">
-          <img src="../../public/images/Carpool.jpeg" alt="Carpooling" />
+          <img src= "../../public/images/Carpool.jpeg" alt="Carpooling" />
         </div>
+      </div>
+
+      <div>
+        <Features/>
       </div>
     </div>
   );
