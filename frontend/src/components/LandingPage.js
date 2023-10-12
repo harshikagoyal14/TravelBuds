@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import '../App.css';
-
 
 const LandingPage = () => {
   return (
@@ -11,12 +11,12 @@ const LandingPage = () => {
           <h1> Save <span className='red'>Big</span>,</h1>
           <h1>Choose TravelBud!"</h1>
           <div className="landing-buttons">
-            <button className="login-button">Login</button>
-            <button className="signup-button">Sign Up</button>
+            <Link to="/login" className="login-button">Login</Link>
+            <Link to="/signup" className="signup-button">Sign Up</Link>
           </div>
         </div>
         <div className="landing-right">
-          <img src= "../../public/images/Carpool.jpeg" alt="Carpooling" />
+          <img src="../../public/images/Carpool.jpeg" alt="Carpooling" />
         </div>
       </div>
     </div>
