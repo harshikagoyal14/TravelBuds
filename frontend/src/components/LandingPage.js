@@ -17,12 +17,12 @@ const LandingPage = () => {
           <h1> Save <span className='red'>Big</span>,</h1>
           <h1>Choose TravelBud!"</h1>
           <div className="landing-buttons">
-            <Link to="/login" className="login-button">Login</Link>
-            <Link to="/signup" className="signup-button">Sign Up</Link>
+            <Link to="/login" className="login-button1">Login</Link>
+            <Link to="/signup" className="signup-button1">Sign Up</Link>
           </div>
         </div>
         <div className="landing-right">
-          <img src= "../../public/images/Carpool.jpeg" alt="Carpooling" />
+          <img src= {require("../images/Carpool.jpeg")} alt="Carpooling" />
         </div>
       </div>
 

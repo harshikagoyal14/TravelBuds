@@ -114,8 +114,8 @@ html {
   text-align: right;
 }
 
-.login-button,
-.signup-button {
+.login-button1,
+.signup-button1 {
   padding: 10px 20px;
   font-size: 18px;
   border: none;
@@ -124,25 +124,25 @@ html {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.login-button {
+.login-button1 {
   background-color: #000;
   color: #fff;
   border: 2px solid #fff;
 }
 
-.signup-button {
+.signup-button1 {
   background-color:rgb(158, 16, 16);
   color: #fff;
   border: 2px solid #fff;
 }
 
-.login-button:hover {
+.login-button1:hover {
   background-color: #fff;
   color: #000;
   border-color: #000;
 }
 
-.signup-button:hover {
+.signup-button1:hover {
   background-color: #000;
   color: #fff;
   border-color: #fff;
@@ -203,18 +203,31 @@ html {
 
 /*Sign-up*/
 
+.box1 {
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+
 .signup-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: black;
   color: white;
+  background-image: url("https://t3.ftcdn.net/jpg/04/19/68/32/360_F_419683225_7RYa2h2m54UkGLCeEC6tHXoahX7Ymv8k.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
 }
 
 .form-group {
-  margin: 10px;
+  margin: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -233,6 +246,7 @@ input[type="password"] {
   width: 250px;
   border: 1px solid white;
   background-color: transparent;
+  border-radius: 20px;
   color: white;
 }
 
@@ -243,22 +257,51 @@ button {
   color: white;
   border: 1px solid white;
   cursor: pointer;
+  border-radius: 20px;
+}
+
+.signup-button {
+  font-size: 1.15rem;
+  margin-top: 20px;
+  background-color: #060505;
+  color: #fff;
+  border: 1px solid white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+  background-color: #ff1a00;
 }
 
 /* LogIn */
+
+.box2{
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+}
 
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: black;
   color: white;
+  background-image: url("https://t3.ftcdn.net/jpg/04/19/68/32/360_F_419683225_7RYa2h2m54UkGLCeEC6tHXoahX7Ymv8k.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+
 }
 
 .form-group {
-  margin: 10px;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,6 +330,23 @@ button {
   border: 1px solid white;
   cursor: pointer;
 }
+
+.login-button {
+  font-size: 1.15rem;
+  margin-top: 20px;
+  background-color: #060505;
+  color: #fff;
+  border: 1px solid white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #ff1a00;
+}
+
+
 
 
 

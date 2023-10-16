@@ -28,7 +28,9 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h1>Login</h1>
+
+      <div className='box2'>
+        <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Email:</label>
@@ -50,15 +52,18 @@ const Login = () => {
               onChange={handleInputChange}
               required
             />
-            <button type="button" onClick={togglePasswordVisibility}>
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
+            <i
+                className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                onClick={togglePasswordVisibility}
+              ></i>
           </div>
         </div>
         <div className="form-group">
-          <button type="submit">Login</button>
+          <button className="login-button" type="submit">Login</button>
         </div>
       </form>
+      </div>
+      
     </div>
   );
 };
