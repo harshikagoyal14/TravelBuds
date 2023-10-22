@@ -25,6 +25,7 @@ html {
   justify-content: space-between;
   align-items: center;
   background-color:black;
+  border-bottom-color: #1E1E24;
   color: #fff;
   padding: 10px 20px;
   margin-top: 0px;
@@ -346,15 +347,121 @@ button {
   background-color: #ff1a00;
 }
 
+.left-dashboard{
+  display: flex;
+  top : 87px;
+  left: 3rem;
+  width : 275px;
+  height: 600px;
+  margin: 1.5rem;
+  background-color: #0F0F13;
+  border-radius: 6px;
+}
+
+.search-bar{
+ border-radius: 10px;
+}
+
+.card{
+  display:flex;
+  width: 17em;
+  height: 20em;
+  background-color: #0F0F13;
+  border-radius: 15px;
+  margin:2em;
+  padding: 1em;
+  
+}
+
+.card-container{
+  display: flex;
+  position: absolute;
+  flex-wrap: wrap;
+  left: 20em;
+  top: 8em;
+  width:75em;
+  height:34em;
+  gap: 0.5em;
+  justify-content: left;
+  overflow: auto;
+  
+}
+
+#pickup-icon-card{
+  background-color:  #0F0F13;
+  position:relative;
+  left: 0.3rem;
+  top: 0.3rem;
+  margin: 1em;
+  width: 22px;
+  height: 22px;
+} 
+
+#to-icon-card{
+  background-color:  #0F0F13;
+  position: relative;
+  top: 0.3rem;
+  left: 2.6rem;
+  margin: 1em;
+  width: 22px;
+  height: 22px;
+  
+}
+
+#enter-icon-card{
+  background-color:  #FD4438;
+  margin: 1em;
+  width: 22px;
+  height: 22px;
+  position:relative;
+  top: 16.55rem;
+  right: 18.9rem;
+}
+
+#check-icon-card{
+  background-color:  #0F0F13;
+  margin: 1em;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  align-self: flex-end;
+  right: 17.5rem;
+ 
+}
 
 
+.custom-h3 {
+  color: #FD4438;
+  background-color:  #0F0F13;
+}
 
+.custom-h3-to{
+  position: relative;
+  left: 2rem;
+  color: #FD4438;
+  background-color:  #0F0F13;
+}
+.custom-h4{
+  position:relative;
+  top: 3rem;
+  right: 11rem;
+  color: white;
+  height: 0rem;
+  background-color: none;
+}
 
-
-
-
-
-
-
-
+.enter-button{
+  border: none;
+  display:flex;
+  border-radius: 7px;
+  padding: 15px 40px;
+  margin: 1px;
+  background-color: #FD4438;
+  position:relative;
+  height: 2.5rem;
+  position:relative;
+  align-self:end;
+  right: 11.5rem;
+  bottom: 0.5rem;
+}
 
