@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
-import '../App.css'; 
+import '../App.css';
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { Axios } from 'axios';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    mobile: '',
     rollNumber: '',
     password: '',
     confirmPassword: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setloading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,15 +30,36 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement your signup logic here, e.g., API calls or validation
-    console.log(formData);
+    // Create a JavaScript object to represent the form data
+    const postData = {
+      name: formData.name,
+      email: formData.email,
+      mobile: formData.mobile,
+      rollNumber: formData.rollNumber,
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+    };
+
+    // Send the form data to the server
+    axios.post('http://localhost:3001/api/user/signup',postData)
+    .then((response) => {
+  if (response.ok) {
+    console.log('Data sent to server successfully');
+  } else {
+    console.error('Error sending data to server:', response.status, response.statusText);
+  }
+})
+.catch((error) => {
+  console.error('Fetch error:', error);
+});
+
   };
 
   return (
     <div className="signup-container" style={{ backgroundImage: 'url("https://t3.ftcdn.net/jpg/04/19/68/32/360_F_419683225_7RYa2h2m54UkGLCeEC6tHXoahX7Ymv8k.jpg")' }}>
       <div className='box1'>
         <h1>Signup</h1>
-        <form onSubmit={handleSubmit}>
+        <form action="/signup" method="post" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name:</label>
             <input
@@ -50,6 +76,16 @@ const Signup = () => {
               type="email"
               name="email"
               value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Mobile Number:</label>
+            <input
+              type="text"
+              name="mobile"
+              value={formData.mobile}
               onChange={handleInputChange}
               required
             />
