@@ -1,18 +1,25 @@
-const express= require("express");
-require('dotenv').config();
+const express = require('express');
 const app = express();
 const cors = require('cors');
 const connectDB = require('./config/dB');
+const userRouter = require('./routes/userRoute');
 
-  connectDB();
 
-  app.get('/', (req, res) => {
-    res.send('<h1>Phonebook</h1>') })
+connectDB();
 
-  app.use(cors());
-  app.use(express.json());
 
-  app.get('/autocomplete', async (req, res) => {
+app.use(cors());
+app.use(express.json());
+
+
+app.get('/', (req, res) => {
+  res.send('<h1>Phonebook</h1>');
+});
+
+
+app.use('/api/user', userRouter);
+
+app.get('/autocomplete', async (req, res) => {
     try {
       const { input } = req.query;
       const response = await axios.get(
@@ -23,10 +30,12 @@ const connectDB = require('./config/dB');
       console.error(error);
       res.status(500).json({ error: 'An error occurred' });
     }
-  });
-  
-  const PORT = 3001
-  app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`)
-  })
+});
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 

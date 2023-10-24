@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
-import 'react-toastify/dist/ReactToastify.css';
 import { Axios } from 'axios';
 
 const Signup = () => {
