@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
-import { Axios } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,7 @@ const Signup = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,17 +42,11 @@ const Signup = () => {
 
     // Send the form data to the server
     axios.post('http://localhost:3001/api/user/signup',postData)
-    .then((response) => {
-  if (response.ok) {
-    console.log('Data sent to server successfully');
-  } else {
-    console.error('Error sending data to server:', response.status, response.statusText);
-  }
-})
-.catch((error) => {
-  console.error('Fetch error:', error);
-});
-
+    .then((response) =>{
+      console.log("Data sent to server successfully");
+      navigate('/ride-now');
+    })
+    navigate('/ride-now');
   };
 
   return (
