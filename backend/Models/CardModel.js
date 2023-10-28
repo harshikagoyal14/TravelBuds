@@ -10,7 +10,7 @@ const cardSchema = new mongoose.Schema({
       required: true,
     },
     time: {
-      type: Number,
+      type: Date,
       required: true,
     },
     name: {
@@ -18,7 +18,7 @@ const cardSchema = new mongoose.Schema({
         required: true,
     },
     date: {
-        type: String,
+        type: Date,
         required: true,
     },
     capacity: {
