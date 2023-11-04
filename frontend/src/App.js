@@ -10,10 +10,7 @@ import RideNow from './components/RideNow';
 
 function App() {
   return (
-
-
     <>
-    
       <Routes>
         <Route exact path="/" element={<LandingPage/>} />
         <Route exact path ="/login" element={<Login/>} />
