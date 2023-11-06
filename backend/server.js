@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const connectDB = require('./config/dB');
 const userRouter = require('./routes/userRoute');
+const cardRouter= require('./routes/cardRoute');
 
 
 connectDB();
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/api/user', userRouter);
+app.use('/api/card',cardRouter);
 
 app.get('/autocomplete', async (req, res) => {
     try {

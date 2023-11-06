@@ -1,8 +1,14 @@
+const express = require('express');
+const cardController = require('../controllers/cardController');
+const router = express.Router();
 
-const { Router } = require('express');
-const cardController = require('../controllers/cardControllers');
-const router = Router();
+// Route for adding a card
+router.post('/add-card', cardController.add_card);
 
-router.get('/items', itemController.get_items);
-router.post('/items',itemController.post_item);
-router.delete('/items/:id',itemController.delete_item);
+// Route for removing a card by ID
+router.delete('/remove-card/:id', cardController.remove_card);
+
+// Route for searching cards
+router.get('/search-cards', cardController.search_cards);
+
+module.exports = router;
