@@ -15,36 +15,40 @@ const Card = ({pickupLocation,destLocation}) => {
     
     return (
         <div className='card'>
-           
-            <div clasName ='from'>
-                <img src = {PickUpIcon}/>
-                <p>From</p>
+           <div className ='top'> 
+                <div className ='from'>
+                <img src={PickUpIcon} style={{ backgroundColor: '#0F0F13' }} />
+                    
+                    <p style = {{color: '#FD4438', backgroundColor: '#0F0F13' }} id='picklocation'>Pilani</p>
+                </div>
+
+                <div className ='to'>
+                <img src = {ToIcon}  style={{ backgroundColor: '#0F0F13' }} />
+                   
+                    <p style = {{color: '#FD4438', backgroundColor: '#0F0F13'  }} id='destlocation'>Delhi</p>
+                </div>
             </div>
 
-            <div clasName ='to'>
-               <img src = {ToIcon}/>
-                <p>To</p>
+            <div className ='car-name'>
+                <span style={{ backgroundColor: '#0F0F13',color:'#D0D0DA' }} >TOYOTA FORTUNER</span>
             </div>
 
-            <div clasName ='car-name'>
-                <p>TOYOTA FORTUNER</p>
-            </div>
-
-            <div clasName ='date-n-time'>
+            <div className ='date-n-time'>
                 <p>Date and Time </p>
             </div>
 
             <div className='car-booker'>
-                <p>NAME</p>
+                <span style={{ backgroundColor: '#0F0F13',color:'#D0D0DA' }} >NAME</span>
             </div>
 
-            <div className='capacity'>
-                <img src = {CheckIcon}/>
+            <div className='bottom'>
+                    <div className='capacity'>
+                        <img src = {CheckIcon}  style={{ backgroundColor: '#0F0F13' }} />
+                    </div>
+                
+                    <button className="enter-button" onClick={() => setShowModal(true)}>Enter</button>
+                    {showModal && <CardPopup closeModal={closeModal}/>}
             </div>
-          
-             <button className="enter-button" onClick={() => setShowModal(true)}>Enter</button>
-             {showModal && <CardPopup closeModal={closeModal}/>}
-          
           
 
         </div>

@@ -41,7 +41,9 @@ const RideNow = () => {
                 <Card />
                 
             </div>
-            <><Dropdown/></>
+            <>
+                <Dropdown logoutHandler = {logoutHandler}/>
+            </>
         </div>
     );
 }

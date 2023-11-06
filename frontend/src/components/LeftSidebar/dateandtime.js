@@ -1,15 +1,29 @@
-import React,{ useState } from 'react'
-import DateTimePicker from 'react-datetime-picker';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './LeftDashboard.css';
 
+const DateTimePicker = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-const DateTime = ()=>{
-    
-  const [value, setValue] = useState(new Date());
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
+
   return (
     <div>
-       <DateTimePicker onChange={setValue} value={value} />
+    
+      <DatePicker
+        selected={selectedDate}
+        onChange={handleDateChange}
+        showTimeSelect
+        timeFormat="HH:mm"
+        timeIntervals={15}
+        dateFormat="MMMM d, yyyy h:mm aa"
+        className='date-pick-style'
+      />
     </div>
-  )
-}
+  );
+};
 
-export default DateTime;
+export default DateTimePicker;
