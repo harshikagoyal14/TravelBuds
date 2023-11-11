@@ -6,7 +6,7 @@ import Time from '../../icons/time-icon.svg';
 import './popUp.css';
 import { useNavigate } from 'react-router-dom';
 
-const AddRidePop = ({ closePop }) => {
+const AddRidePop = ({ closePop , addRideToList}) => {
   const [formData, setFormData] = useState({
     pickup: '',
     destination: '',
@@ -16,12 +16,17 @@ const AddRidePop = ({ closePop }) => {
     capacity: '',
   });
 
-  const handleSubmit = async () => {
+ const handleSubmit = async () => {
   try {
     const response = await axios.post('http://localhost:3001/api/card/add-card', formData);
 
     if (response.status === 200) {
       console.log('Card added successfully');
+      
+      // Add the new card to the list
+      addRideToList(formData);
+      
+      // Reset the form data
       setFormData({
         pickup: '',
         destination: '',
@@ -30,6 +35,7 @@ const AddRidePop = ({ closePop }) => {
         car: '',
         capacity: '',
       });
+      
       closePop();
     } else {
       console.log('Card addition failed');
@@ -38,6 +44,7 @@ const AddRidePop = ({ closePop }) => {
     console.error('Error:', error);
   }
 };
+
 
 
   const handleChange = (e) => {

@@ -532,3 +532,63 @@ button {
   transition: var(--speed);
 }
 
+/* ride-now */
+
+.left-dashboard {
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #1a1a1a;
+  padding: 1em;
+  display: inline;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card-container {
+  display: inline-flex;
+  margin-left: 250px;
+  gap: 0.5em;
+  justify-content: flex-start;
+  padding: 1em;
+}
+
+.card {
+  width: 250px;
+  height: 300px;
+  background-color: #1414d8;
+  border-radius: 15px;
+  margin: 0.5em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.enter-button {
+  border: none;
+  border-radius: 7px;
+  background-color: #FD4438;
+  width: 6em;
+  height: 2em;
+  padding: 0.2em;
+  align-self: flex-end;
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+
+
+
+
