@@ -1,23 +1,30 @@
 const CardModel = require('../Models/CardModel');
 
 // Search for Cards
-const search_cards = (req, res) => {
-  const searchQuery = req.query.search; // Assuming you're passing the search query as a query parameter
+const search_cards = async (req, res) => {
+  try {
+    const { pickupCity, destinationCity, date } = req.query;
 
-  // Use a regular expression to perform a case-insensitive search on the 'pickup' and 'destination' fields
-  CardModel.find({
-    $or: [
-      { pickup: { $regex: searchQuery, $options: 'i' } },
-      { destination: { $regex: searchQuery, $options: 'i' } },
-    ],
-  })
-    .then((cards) => {
-      res.json(cards);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).json({ message: 'An error occurred' });
-    });
+    let query = {};
+
+    // Check if search criteria are provided
+    if (pickupCity || destinationCity || date) {
+      query = {
+        $or: [
+          { pickup: { $regex: pickupCity, $options: 'i' } },
+          { destination: { $regex: destinationCity, $options: 'i' } },
+          // Add more conditions for other search criteria (e.g., date)
+        ],
+      };
+    }
+
+    const cards = await CardModel.find(query);
+    res.json(cards);
+    console.log(res);
+  } catch (error) {
+    console.error('Error performing search:', error.message);
+    res.status(500).json({ message: 'An error occurred' });
+  }
 };
 
 // Adding a Card

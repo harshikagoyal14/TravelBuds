@@ -7,8 +7,10 @@ import Features from './components/Features';
 import Login from './components/LoginPage';
 import Signup from './components/SignupPage';
 import RideNow from './components/RideNow';
+import { LeftDashboard } from './components/LeftSidebar/LeftDashboard';
 
 function App() {
+
   return (
     <>
       <Routes>
@@ -17,8 +19,7 @@ function App() {
         <Route path ="/signup" element={<Signup/>} />
         <Route path ="/ride-now" element={<RideNow/>} />
       </Routes>
-      </>
-     
+    </> 
   );
 }
 

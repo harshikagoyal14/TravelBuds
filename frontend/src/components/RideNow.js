@@ -10,11 +10,12 @@ import CardPopup from './Card/CardPopup';
 import { sendEmail } from './EmailHandler';
 
 const RideNow = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [cards, setCards] = useState([]); // To store the list of cards
+  const [cards, setCards] = useState([]);
   const [popupOpen, setPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+
 
   useEffect(() => {
     const userInfo = localStorage.getItem('userInfo');
@@ -30,7 +31,8 @@ const RideNow = () => {
   }, []);
 
   const addNewCard = (newCard) => {
-    const updatedCards = [...cards, { ...newCard, userId: user.id, capacity: parseInt(newCard.capacity, 10) }];
+    const updatedCards = [...cards, { ...newCard, userId: user ? user.id : null, capacity: parseInt(newCard.capacity, 10) }];
+    console.log(user.id);
     setCards(updatedCards);
 
     // Store the updated cards in localStorage
@@ -41,7 +43,7 @@ const RideNow = () => {
     const cardToDelete = cards[index];
 
     // Check if the user trying to delete the card is the card owner
-    if (cardToDelete.userId === user.id) {
+    if (user && cardToDelete.userId === user.id) {
       const updatedCards = cards.filter((_, i) => i !== index);
       setCards(updatedCards);
 
@@ -68,10 +70,10 @@ const RideNow = () => {
 
     const cardToUpdate = updatedCards.find((card) => card.id === cardId);
     if (cardToUpdate && cardToUpdate.capacity === 0) {
-    const userEmail = user.email; // replace 'email' with the actual property name
-    console.log('Sending email to:', userEmail);
-    sendEmail(userEmail, cardId);
-}
+      const userEmail = user ? user.email : null; // replace 'email' with the actual property name
+      console.log('Sending email to:', userEmail);
+      sendEmail(userEmail, cardId);
+    }
 
     // Update localStorage after updating the card's capacity
     localStorage.setItem('rideNowCards', JSON.stringify(updatedCards));
@@ -82,15 +84,16 @@ const RideNow = () => {
     setSelectedCard(null);
   };
 
-   const renderCards = () => {
-    return cards.map((card, index) => (
+  const renderCards = () => {
+
+    const cardsToRender =  cards;
+    return cardsToRender.map((card, index) => (
       <Card
         key={index}
         cardData={card}
         currentUser={user}
         onClick={() => deleteCard(index)}
         updateCardCapacity={updateCardCapacity} 
-
       />
     ));
   };
@@ -108,7 +111,7 @@ const RideNow = () => {
         <Navbar />
       </div>
 
-      <LeftDashboard addNewCard={addNewCard} />
+      <LeftDashboard addNewCard={addNewCard}  />
       <Dropdown />
 
       {/* Render the cards */}
