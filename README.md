@@ -23,7 +23,7 @@ TravelBud is a ride-sharing web application that connects travelers with drivers
 1. Clone the repository:
 
     ```bash
-    git clone [https://github.com/your-username/phonebook-app.git](https://github.com/harshikagoyal14/TravelBuds.git)
+    git clone https://github.com/harshikagoyal14/TravelBuds.git
     ```
 
 2. Install dependencies:
