@@ -4,8 +4,7 @@ import AddRidePop from './AddRidePop';
 import PickupIcon from '../../icons/pickup-icon.svg';
 import DestIcon from '../../icons/destination-icon.svg';
 import Time from '../../icons/time-icon.svg';
-import CardList from '../Card/Card';
-import DateTime from './dateandtime';
+import DateTimePicker from 'react-datetime-picker';
 
 export const LeftDashboard = ({ addNewCard ,uniqueId}) => {
   const [addRide, setAddRidePop] = useState(false);
@@ -43,8 +42,12 @@ export const LeftDashboard = ({ addNewCard ,uniqueId}) => {
 
       <div className='time'>
         <img className='icon3' src={Time} alt='' />
-        <h5>Time & Date</h5>
-        <input type='text' id={`date_${uniqueId}`} className='search-bar' />
+        <form>
+          <label>
+            <h5>Date</h5>
+            <input type='text' id={`date_${uniqueId}`} className='search-bar' />
+          </label>
+        </form>
       </div>
 
       <button className='search-btn' >

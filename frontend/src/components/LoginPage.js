@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +9,15 @@ const Login = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+    useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    console.log(storedUser);
+    if (storedUser) {
+      // User is already logged in, redirect to the ride-now page
+      navigate('/ride-now');
+    }
+  }, [navigate]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,26 +32,25 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const response = await fetch('http://localhost:3001/api/user/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+  const response = await fetch('http://localhost:3001/api/user/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
 
-    if (response.ok) {
-      // If login is successful, save user data to local storage
-      localStorage.setItem('user', JSON.stringify(formData));
+  if (response.ok) {
+   localStorage.setItem('user', JSON.stringify(formData));
 
-      console.log('Login-Successful');
-      navigate('/ride-now');
-    } else {
-      console.log('Login failed');
-    }
-  };
+    navigate('/ride-now');
+  } else {
+    console.log('Login failed');
+  }
+};
+
 
   return (
     <div className="login-container">

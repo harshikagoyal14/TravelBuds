@@ -3,30 +3,27 @@ const app = express();
 const cors = require('cors');
 const connectDB = require('./config/dB');
 const userRouter = require('./routes/userRoute');
-const cardRouter= require('./routes/cardRoute');
+const cardRouter = require('./routes/cardRoute');
 const nodemailer = require('nodemailer');
-
+require('dotenv').config(); // Load environment variables from .env file
 
 connectDB();
 
-
 app.use(cors());
 app.use(express.json());
-
 
 app.get('/', (req, res) => {
   res.send('<h1>Phonebook</h1>');
 });
 
-
 app.use('/api/user', userRouter);
-app.use('/api/card',cardRouter);
+app.use('/api/card', cardRouter);
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'goyalharshika266@gmail.com',
-    pass: 'ss', 
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASSWORD,
   },
 });
 
@@ -35,7 +32,7 @@ app.post('/send-email', (req, res) => {
   console.log('Request Body:', req.body);
 
   const mailOptions = {
-    from: 'goyalharshika266@gmail.com',
+    from: process.env.GMAIL_USER,
     to,
     subject,
     text,
@@ -57,5 +54,3 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-

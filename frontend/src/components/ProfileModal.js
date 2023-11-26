@@ -1,3 +1,4 @@
+// src/components/ProfileModal.js
 import { ViewIcon } from "@chakra-ui/icons";
 import {
   Modal,

@@ -5,7 +5,6 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src="/path-to-your-logo.png" alt="TravelBud Logo" />
         <span>TRAVELBUD</span>
       </div>
       
