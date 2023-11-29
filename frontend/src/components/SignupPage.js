@@ -28,26 +28,29 @@ const Signup = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Create a JavaScript object to represent the form data
-    const postData = {
-      name: formData.name,
-      email: formData.email,
-      mobile: formData.mobile,
-      rollNumber: formData.rollNumber,
-      password: formData.password,
-      confirmPassword: formData.confirmPassword,
-    };
-
-    // Send the form data to the server
-    axios.post('http://localhost:3001/api/user/signup',postData)
-    .then((response) =>{
-      console.log("Data sent to server successfully");
-      navigate('/ride-now');
-    })
-    navigate('/ride-now');
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  // Create a JavaScript object to represent the form data
+  const postData = {
+    name: formData.name,
+    email: formData.email,
+    mobile: formData.mobile,
+    rollNumber: formData.rollNumber,
+    password: formData.password,
+    confirmPassword: formData.confirmPassword,
   };
+
+  // Send the form data to the server
+  axios.post('http://localhost:3001/api/user/signup', postData)
+    .then((response) => {
+      console.log("Data sent to server successfully");
+      navigate('/login');
+    })
+    .catch((error) => {
+      console.error("Error sending data to server:", error.message);
+      // Handle the error if needed
+    });
+};
 
   return (
     <div className="signup-container" style={{ backgroundImage: 'url("https://t3.ftcdn.net/jpg/04/19/68/32/360_F_419683225_7RYa2h2m54UkGLCeEC6tHXoahX7Ymv8k.jpg")' }}>
@@ -136,3 +139,9 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+
+
+
+

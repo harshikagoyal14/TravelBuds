@@ -1,4 +1,4 @@
-// src/components/ProfileModal.js
+
 import { ViewIcon } from "@chakra-ui/icons";
 import {
   Modal,
@@ -15,7 +15,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-const ProfileModal = ({ user, children }) => {
+const ProfileModal = ({ user, children, onLogout }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -35,7 +35,6 @@ const ProfileModal = ({ user, children }) => {
             justifyContent="center"
             color="white"
           >
-            {user ? user.name : 'User Name Not Available'}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
@@ -53,7 +52,7 @@ const ProfileModal = ({ user, children }) => {
             </Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={onLogout}>Logout</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

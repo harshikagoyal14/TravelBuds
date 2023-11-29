@@ -10,14 +10,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-    useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    console.log(storedUser);
-    if (storedUser) {
-      // User is already logged in, redirect to the ride-now page
-      navigate('/ride-now');
-    }
-  }, [navigate]);
+   
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

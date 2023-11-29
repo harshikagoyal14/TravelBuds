@@ -15,7 +15,7 @@ const search_cards = async (req, res) => {
         $or: [
           pickupCity && { pickup: { $regex: pickupCity, $options: 'i' } },
           destinationCity && { destination: { $regex: destinationCity, $options: 'i' } },
-          // Add more conditions for other search criteria (e.g., date)
+         
         ].filter(Boolean), // Filter out undefined values
       };
     }
