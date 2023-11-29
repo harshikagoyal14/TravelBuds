@@ -1,6 +1,6 @@
 // RideNow.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useContext} from 'react';
 import Navbar from './Navbar';
 import Card from './Card/Card';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { LeftDashboard } from './LeftSidebar/LeftDashboard';
 import Dropdown from './ProfileDropdown';
 import { sendEmail } from './EmailHandler';
 import ProfileModal from './ProfileModal';
+import { v4 as uuidv4 } from 'uuid';
 
 const RideNow = () => {
   const navigate = useNavigate();
@@ -15,7 +16,9 @@ const RideNow = () => {
   const [cards, setCards] = useState([]);
   const [popupOpen, setPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const uniqueId = uuidv4();   
   const [searchResults, setSearchResults] = useState(null);
+ 
 
 useEffect(() => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -32,6 +35,19 @@ useEffect(() => {
   }
 }, []);
 
+ const searchCards = async (searchParams) => {
+    try {
+      // Make an API call to retrieve matching cards based on searchParams
+      const response = await fetch(`http://localhost:3001/api/card/search-cards?pickupCity=${searchParams.pickup}&destinationCity=${searchParams.destination}&date=${searchParams.date}`);
+      const data = await response.json();
+      console.log(searchParams);
+      console.log('Search Results:', data);
+      setSearchResults(data);
+    } catch (error) {
+      console.error('Error searching for cards:', error.message);
+    }
+  };
+
 
 const addNewCard = (newCard) => {
   console.log(user);
@@ -44,6 +60,7 @@ const addNewCard = (newCard) => {
     }
   ];
   setCards(updatedCards);
+  setSearchResults((prevResults) => [...prevResults, newCard]);
 
   // Store the updated cards in localStorage
   localStorage.setItem('rideNowCards', JSON.stringify(updatedCards));
@@ -102,8 +119,22 @@ const deleteCard = (index) => {
     setSelectedCard(null);
   };
 
-  const renderCards = () => {
+  /*const renderCards = () => {
     const cardsToRender = [...cards];  // Use the spread operator to create a new array
+    return cardsToRender.map((card, index) => (
+      <Card
+        key={index}
+        cardData={card}
+        currentUser={user}
+        onClick={() => deleteCard(index)}
+        updateCardCapacity={updateCardCapacity} 
+      />
+    ));
+  }; */
+
+   const renderCards = () => {
+    const cardsToRender = searchResults || cards;
+
     return cardsToRender.map((card, index) => (
       <Card
         key={index}
@@ -118,9 +149,12 @@ const deleteCard = (index) => {
   const logoutHandler = () => {
     // Remove user data from local storage
     localStorage.removeItem('userInfo');
-    localStorage.removeItem('rideNowCards'); // Clear rideNowCards on logout
+    localStorage.removeItem('rideNowCards'); 
     navigate('/');
-  };
+  }; 
+
+ 
+
 
   return (
     <div>
@@ -128,7 +162,7 @@ const deleteCard = (index) => {
         <Navbar />
       </div>
 
-      <LeftDashboard addNewCard={addNewCard}   />
+      <LeftDashboard addNewCard={addNewCard} uniqueId={uniqueId}  searchCards={searchCards}  />
       <ProfileModal user={user} />
 
       {/* Render the cards */}

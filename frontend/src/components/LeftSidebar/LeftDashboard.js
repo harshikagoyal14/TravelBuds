@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LeftDashboard.css';
 import AddRidePop from './AddRidePop';
 import PickupIcon from '../../icons/pickup-icon.svg';
@@ -6,17 +6,36 @@ import DestIcon from '../../icons/destination-icon.svg';
 import Time from '../../icons/time-icon.svg';
 import DateTimePicker from 'react-datetime-picker';
 
-export const LeftDashboard = ({ addNewCard ,uniqueId}) => {
-  const [addRide, setAddRidePop] = useState(false);
-  const [rides, setRides] = useState([]); // To store the list of rides
 
+export const LeftDashboard = ({ addNewCard, uniqueId, searchCards  }) => {
+  const [addRide, setAddRidePop] = useState(false);
+  const [rides, setRides] = useState([]); 
   const closePop = () => setAddRidePop(false);
 
   const addRideToList = (newRide) => {
     setRides([...rides, newRide]);
-    // Assuming addNewCard is a function passed down to update cards in RideNow component
     addNewCard(newRide);
   };
+
+  const [searchParams, setSearchParams] = useState({
+    pickup: '',
+    destination: '',
+    date: '',
+  });
+
+const handleSearch = () => {
+  setSearchParams((prevSearchParams) => ({
+    ...prevSearchParams,
+    pickup: document.getElementById(`pickup_${uniqueId}`).value,
+    destination: document.getElementById(`destination_${uniqueId}`).value,
+    date: document.getElementById(`date_${uniqueId}`).value,
+  }));
+};
+
+useEffect(() => {
+  // This effect will be triggered after the component has rendered
+  searchCards(searchParams);
+}, [searchParams]);
 
   return (
     <div className='left-dashboard'>
@@ -50,7 +69,7 @@ export const LeftDashboard = ({ addNewCard ,uniqueId}) => {
         </form>
       </div>
 
-      <button className='search-btn' >
+      <button className='search-btn' onClick={handleSearch} >
         Search
       </button>
 
